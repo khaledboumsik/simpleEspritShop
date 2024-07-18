@@ -16,11 +16,14 @@ def create_app():
 
         from repository.ProjectRepository import Project
         from repository.JobRepository import Job
+        from repository.AdminRepository import Admin
 
         from controllers.ProjectController import project_blue_print
         from controllers.JobController import job_blue_print
+        from controllers.AdminController import admin_blue_print
 
         app.register_blueprint(project_blue_print)
         app.register_blueprint(job_blue_print)
+        app.register_blueprint(admin_blue_print)
 
     return app
