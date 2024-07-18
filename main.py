@@ -1,19 +1,20 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 db = SQLAlchemy()
 
-
 def create_app():
     app = Flask(__name__)
-    app.config["SQLALCHEMY_DATABASE_URI"] = (
-        "mysql+mysqlconnector://root:@localhost:3306/espritshopmaindb"
-    )
+    app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+mysqlconnector://root:@localhost:3306/espritshopmaindb"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
 
-    with app.app_context():
+    # Enable CORS for all origins on all routes
+    CORS(app)
 
+    with app.app_context():
+        # Import your models and controllers here
         from repository.ProjectRepository import Project
         from repository.JobRepository import Job
         from repository.AdminRepository import Admin

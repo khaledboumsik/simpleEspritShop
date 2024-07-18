@@ -23,7 +23,16 @@ def get_project_by_id(id):
     except Exception as e:
         return jsonify({"message": "An unexpected error occurred.", "error": str(e)}), 500
 
-
+@project_blue_print.route("/projects", methods=["GET"])
+def get_all_jobs():
+    try:
+        project_service = ProjectService(engine)
+        information = project_service.get_all_projects()
+        return jsonify(information), 200
+    except SQLAlchemyError as e:
+        return jsonify({"message": "An error occurred while retrieving projects.", "error": str(e)}), 500
+    except Exception as e:
+        return jsonify({"message": "An unexpected error occurred.", "error": str(e)}), 500
 @project_blue_print.route("/projects/<degree>", methods=["GET"])
 def get_project_by_degree(degree):
     try:

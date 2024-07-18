@@ -1,6 +1,5 @@
 import sys
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError
-sys.path.append(r"C:\Users\Khaled\Desktop\ESPRITSHOP")
 from flask import Flask, request, jsonify, Blueprint
 from sqlalchemy import create_engine
 from services.JobService import JobService

@@ -8,4 +8,3 @@ def hash_password(password):
 
 def verify_password(stored_password, provided_password):
     return bcrypt.checkpw(provided_password.encode('utf-8'), stored_password.encode('utf-8'))
-print(verify_password(hash_password("khaled"),"khaled"))

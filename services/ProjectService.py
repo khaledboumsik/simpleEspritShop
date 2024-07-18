@@ -14,7 +14,26 @@ class ProjectService:
         session.add(project)
         session.commit()
         session.close()
-
+    def get_all_projects(self):
+        session=self.Session()
+        selected_projects=(session.query(Project).all())
+        session.close()
+        return (
+            [
+                {
+                    "Id": project.Id,
+                    "About": project.About,
+                    "Degree": project.Degree,
+                    "Name": project.Name,
+                    "Price": project.Price,
+                    "Demo": project.Demo,
+                    "Picture": project.Picture,
+                }
+                for project in selected_projects
+            ]
+            if selected_projects
+            else {}
+        )
     def get_projects_by_degree(self, Degree):
         session = self.Session()
         selected_projects = session.query(Project).filter_by(Degree=Degree).all()

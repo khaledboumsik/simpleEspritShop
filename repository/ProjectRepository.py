@@ -26,4 +26,4 @@ class Project(db.Model):
         self.Picture=Picture
 
     def __repr__(self):
-        return f"About: {self.About}\n ID: {self.Identifier}\n Degree: {self.Degree}\n Name: {self.Name}\n Price: {self.Price} \n  Demo: {self.Demo}"
+        return f"About: {self.About}\n ID: {self.Id}\n Degree: {self.Degree}\n Name: {self.Name}\n Price: {self.Price} \n  Demo: {self.Demo}"
